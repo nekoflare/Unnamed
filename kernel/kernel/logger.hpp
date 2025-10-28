@@ -9,8 +9,9 @@
 
 namespace logger {
 
-void debug(const char* fmt, ...) noexcept __attribute__((format(printf, 1, 2)));
+    void debug(const char *fmt, ...) noexcept
+            __attribute__((format(printf, 1, 2)));
 
 }
 
-#endif //KERNEL_LOGGER_HPP
+#endif // KERNEL_LOGGER_HPP

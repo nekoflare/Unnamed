@@ -10,13 +10,13 @@
 #define NANOPRINTF_USE_BINARY_FORMAT_SPECIFIERS 1
 #define NANOPRINTF_USE_WRITEBACK_FORMAT_SPECIFIERS 1
 #define NANOPRINTF_USE_SMALL_FORMAT_SPECIFIERS 0
+
 #include <lib/nanoprintf/nanoprintf.h>
 
+#include "arch/x86_64/io.hpp"
 #include "logger.hpp"
 
-#include "arch/x86_64/io.hpp"
-
-static void log_to_e9(const char* buf, size_t bufsz) {
+static void log_to_e9(const char *buf, size_t bufsz) {
     for (size_t i = 0; (i < bufsz) && (buf[i]); i++) {
         outb(0xE9, buf[i]);
     }

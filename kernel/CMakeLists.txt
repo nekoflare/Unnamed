@@ -9,13 +9,13 @@
 cmake_minimum_required(VERSION 4.0.2)
 project(kernel VERSION 1.0 LANGUAGES C CXX ASM)
 
-if(NOT DEFINED KERNEL_ARCHITECTURE)
+if (NOT DEFINED KERNEL_ARCHITECTURE)
     message(FATAL_ERROR "KERNEL_ARCHITECTURE is undefined. please set it. Valid options: x86_64")
-endif()
+endif ()
 
-if(NOT KERNEL_ARCHITECTURE STREQUAL "x86_64")
+if (NOT KERNEL_ARCHITECTURE STREQUAL "x86_64")
     message(FATAL_ERROR "KERNEL_ARCHITECTURE is unknown. Got: ${KERNEL_ARCHITECTURE}")
-endif()
+endif ()
 
 enable_language(ASM_NASM)
 
@@ -27,7 +27,7 @@ set(CMAKE_CXX_NASM_COMPILER nasm)
 # here cmake includes
 if (KERNEL_ARCHITECTURE STREQUAL "x86_64")
     include(cmake/x86_64-flags.cmake)
-endif()
+endif ()
 
 set(CMAKE_C_FLAGS "${SHARED_C_CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS "${SHARED_C_CXX_FLAGS} -fno-exceptions -fno-rtti -fno-threadsafe-statics")
@@ -43,24 +43,31 @@ include_directories(./) # include this whole place as a whole.
 # here sources
 set(KERNEL_SOURCE
         kernel/core.cpp
-        arch/x86_64/gdt.cpp
-        arch/x86_64/gdt.hpp
         kernel/logger.hpp
         kernel/logger.cpp
-        arch/x86_64/io.hpp
+        arch/x86_64/registers.hpp
+
 )
 
 # add architecture specific flags
 
 if (KERNEL_ARCHITECTURE STREQUAL "x86_64")
-    list(APPEND KERNEL_SOURCE 
-        "boot/x86_64/entry.asm")
-else()
+    list(APPEND KERNEL_SOURCE
+            "boot/x86_64/entry.asm"
+            "arch/x86_64/io.hpp"
+            "arch/x86_64/idt.cpp"
+            "arch/x86_64/idt.hpp"
+            "arch/x86_64/gdt.cpp"
+            "arch/x86_64/gdt.hpp"
+            "arch/x86_64/gdt.asm"
+            "arch/x86_64/idt.asm"
+            "arch/x86_64/exception_handlers.asm")
+else ()
     message(FATAL_ERROR "Unknown architecture.")
-endif()
+endif ()
 
 add_executable(kernel
-    ${KERNEL_SOURCE})
+        ${KERNEL_SOURCE})
 
 # here link libraries
 
