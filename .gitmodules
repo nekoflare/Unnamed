@@ -1,0 +1,3 @@
+[submodule "kernel/lib/freestnd-cxx-hdrs"]
+	path = kernel/lib/freestnd-cxx-hdrs
+	url = https://codeberg.org/OSDev/freestnd-cxx-hdrs
