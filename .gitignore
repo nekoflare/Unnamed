@@ -45,3 +45,6 @@ kernel/build
 
 # idea artifacts
 .idea
+tools/Limine
+tools/ovmf-binaries
+tools/*.iso
