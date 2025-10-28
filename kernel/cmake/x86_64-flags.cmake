@@ -1,5 +1,5 @@
 string(JOIN " " SHARED_C_CXX_FLAGS
-    -nostdinc -nostartfiles                                            # Do not include standard headers
+    -nostdinc                                                          # Do not include standard headers
     -Wall -Wextra -Werror -Wformat -Wunused-function -Wformat-security # Set errors
     -fno-stack-protector -fno-stack-check                              # Prevent certain shit that will break me
     -ffreestanding                                                     # Dont use C/C++ libraries the way it thinks

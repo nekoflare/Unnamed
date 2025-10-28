@@ -31,7 +31,7 @@ endif()
 
 set(CMAKE_C_FLAGS "${SHARED_C_CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS "${SHARED_C_CXX_FLAGS} -fno-exceptions -fno-rtti -fno-threadsafe-statics")
-set(CMAKE_EXE_LINKER_FLAGS "-static -nostdlib -z text -T ${CMAKE_SOURCE_DIR}/${KERNEL_ARCHITECTURE}_linker.ld -z max-page-size=0x1000 -fno-lto -fno-PIE -fno-PIC")
+set(CMAKE_EXE_LINKER_FLAGS "-static -nostdlib -z text -T ${CMAKE_SOURCE_DIR}/${KERNEL_ARCHITECTURE}_linker.ld -z max-page-size=0x1000 -fno-lto -fno-PIE -fno-PIC -nostartfiles")
 set(CMAKE_ASM_NASM_FLAGS "-f elf64 -g -F dwarf")
 
 # here includes for the kernel
