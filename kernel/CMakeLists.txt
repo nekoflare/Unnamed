@@ -6,7 +6,7 @@
 #  KERNEL_USE_SANITIZERS - Compile with UBSAN and enable it.
 #
 
-cmake_minimum_required(VERSION 4.2.0)
+cmake_minimum_required(VERSION 4.0.2)
 project(kernel VERSION 1.0 LANGUAGES C CXX ASM)
 
 if(NOT DEFINED KERNEL_ARCHITECTURE)
