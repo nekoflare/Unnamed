@@ -37,6 +37,7 @@ set(CMAKE_ASM_NASM_FLAGS "-f elf64 -g -F dwarf")
 # here includes for the kernel
 include_directories(lib/freestnd-c-hdrs/${KERNEL_ARCHITECTURE}/include)
 include_directories(lib/freestnd-cxx-hdrs/${KERNEL_ARCHITECTURE}/include)
+include_directories(lib/nanoprintf/)
 include_directories(./) # include this whole place as a whole.
 
 # here sources
@@ -44,6 +45,9 @@ set(KERNEL_SOURCE
         kernel/core.cpp
         arch/x86_64/gdt.cpp
         arch/x86_64/gdt.hpp
+        kernel/logger.hpp
+        kernel/logger.cpp
+        arch/x86_64/io.hpp
 )
 
 # add architecture specific flags

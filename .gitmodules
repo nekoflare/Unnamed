@@ -4,3 +4,6 @@
 [submodule "kernel/lib/freestnd-c-hdrs"]
 	path = kernel/lib/freestnd-c-hdrs
 	url = https://codeberg.org/OSDev/freestnd-c-hdrs
+[submodule "kernel/lib/nanoprintf"]
+	path = kernel/lib/nanoprintf
+	url = https://github.com/charlesnicholson/nanoprintf

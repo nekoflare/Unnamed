@@ -1,3 +1,4 @@
+#include "logger.hpp"
 #include "arch/x86_64/gdt.hpp"
 extern "C" {
     extern void (*__init_array[])(void);
@@ -14,6 +15,8 @@ static inline void run_constructors() {
 extern "C" void kernel_main() {
     run_constructors();
     x86_64::init_gdt();
+    logger::debug("wsg bro");
+
     while (true) {
         asm volatile ("cli; hlt");
     }
