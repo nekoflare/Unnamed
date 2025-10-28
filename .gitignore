@@ -42,3 +42,6 @@
 
 # Kernel build artifacts
 kernel/build
+
+# idea artifacts
+.idea
