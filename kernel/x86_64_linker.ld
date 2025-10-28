@@ -43,7 +43,7 @@ SECTIONS
 
     . = ALIGN(CONSTANT(MAXPAGESIZE));
 
-    .data : AT(ADDR(.text) + SIZEOF(.text) + SIZEOF(.rodata) + SIZEOF(.init_array) + SIZEOF(.fini_array)) 
+    .data :
     {
         _sdata = .;
         *(.data .data.*)

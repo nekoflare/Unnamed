@@ -18,7 +18,7 @@
 
 static void log_to_e9(const char *buf, size_t bufsz) {
     for (size_t i = 0; (i < bufsz) && (buf[i]); i++) {
-        outb(0xE9, buf[i]);
+        x86_64::outb(0xE9, buf[i]);
     }
 }
 

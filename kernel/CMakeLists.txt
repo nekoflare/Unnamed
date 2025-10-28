@@ -39,13 +39,21 @@ include_directories(lib/freestnd-c-hdrs/${KERNEL_ARCHITECTURE}/include)
 include_directories(lib/freestnd-cxx-hdrs/${KERNEL_ARCHITECTURE}/include)
 include_directories(lib/nanoprintf/)
 include_directories(./) # include this whole place as a whole.
+include_directories(${CMAKE_SOURCE_DIR}/../tools/Limine/) # whoops, kinda whacky
 
 # here sources
 set(KERNEL_SOURCE
         kernel/core.cpp
         kernel/logger.hpp
         kernel/logger.cpp
-        arch/x86_64/registers.hpp
+        mm/pma.cpp
+        mm/pma.hpp
+        kernel/assert.hpp
+        arch/x86_64/cpu.hpp
+        lib/ptr_array_wrapper.hpp
+        mm/vma.cpp
+        mm/vma.hpp
+        lib/utils.hpp
 
 )
 
@@ -61,7 +69,8 @@ if (KERNEL_ARCHITECTURE STREQUAL "x86_64")
             "arch/x86_64/gdt.hpp"
             "arch/x86_64/gdt.asm"
             "arch/x86_64/idt.asm"
-            "arch/x86_64/exception_handlers.asm")
+            "arch/x86_64/exception_handlers.asm"
+            "arch/x86_64/registers.hpp")
 else ()
     message(FATAL_ERROR "Unknown architecture.")
 endif ()

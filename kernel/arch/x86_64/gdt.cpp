@@ -5,7 +5,7 @@
 #include "gdt.hpp"
 
 // null, kernel code, kernel data, user code32, user data, user code64
-static x86_64::GdtSegmentDescriptor segments[6] {};
+static x86_64::GdtSegmentDescriptor segments[6]{};
 
 void x86_64::init_gdt() {
     segments[0] = create_descriptor(0, 0, static_cast<Access>(0),

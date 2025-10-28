@@ -79,7 +79,8 @@ namespace x86_64 {
     }
 
     void init_gdt();
-    extern "C" void flush_gdt(GdtRegister *reg, uint16_t codeseg, uint16_t dataseg);
+    extern "C" void flush_gdt(GdtRegister *reg, uint16_t codeseg,
+                              uint16_t dataseg);
 } // namespace x86_64
 
 #endif // KERNEL_GDT_HPP
