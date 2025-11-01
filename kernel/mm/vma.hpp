@@ -10,6 +10,8 @@
 #include <cstdint>
 #include <lib/spinlock.hpp>
 #include <optional>
+
+#include "pma.hpp"
 #include "kernel/assert.hpp"
 
 namespace memory {
@@ -22,11 +24,9 @@ namespace memory {
 
         VAddrAllocator() = default;
 
-        void init(uint64_t base, uint64_t size, uint64_t page_size) noexcept {
-            ASSERT(page_size >= 4096 && ((page_size & (page_size - 1)) == 0));
+        void init(uint64_t base, uint64_t size) noexcept {
             base_ = base;
-            page_size_ = page_size;
-            total_pages_ = size / page_size;
+            total_pages_ = size / PAGE_SIZE;
 
             // prepare static node pool bookkeeping
             for (size_t i = 0; i < MAX_NODES; ++i) {
@@ -188,7 +188,6 @@ namespace memory {
         Node *head_ = nullptr;
 
         uint64_t base_ = 0;
-        uint64_t page_size_ = 0;
         size_t total_pages_ = 0;
 
         mutable Spinlock lock_;
@@ -200,10 +199,10 @@ namespace memory {
         }
 
         inline uint64_t vaddr_from_page(uint64_t page) const noexcept {
-            return base_ + page * page_size_;
+            return base_ + page * PAGE_SIZE;
         }
         inline uint64_t page_from_vaddr(uint64_t vaddr) const noexcept {
-            return (vaddr - base_) / page_size_;
+            return (vaddr - base_) / PAGE_SIZE;
         }
 
         Node *allocate_node() noexcept {
