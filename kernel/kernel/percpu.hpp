@@ -7,13 +7,19 @@
 
 #include <cstdint>
 
+#include "error.hpp"
+
 namespace core {
     using CpuId = uint32_t;
 
-    struct percpu {};
+    struct percpu {
+        ErrorCode error;
+    };
 
     void setup_bsp_percpu();
     percpu *get_percpu();
+
+    void set_error(ErrorCode code);
 } // namespace core
 
 #endif // KERNEL_PERCPU_HPP

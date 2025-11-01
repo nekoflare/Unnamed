@@ -66,6 +66,10 @@ set(KERNEL_SOURCE
         mm/heap.cpp
         mm/heap.hpp
         lib/cxx-runtime/nothrow.cpp
+        kernel/error.hpp
+        kernel/helpers.hpp
+        lib/memory.hpp
+        kernel/bit_helpers.hpp
 
 )
 

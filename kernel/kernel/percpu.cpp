@@ -22,3 +22,7 @@ void core::setup_bsp_percpu() {
 core::percpu *core::get_percpu() {
     return reinterpret_cast<percpu *>(x86_64::rdmsr(x86_64::MSR_GS_BASE));
 }
+
+void core::set_error(ErrorCode code) {
+    get_percpu()->error = code;
+}

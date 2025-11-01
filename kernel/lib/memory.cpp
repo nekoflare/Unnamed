@@ -2,8 +2,7 @@
 // Created by neko on 11/1/25.
 //
 
-#include <cstdlib>
-#include <cstddef>
+#include "memory.hpp"
 
 extern "C"
 {
