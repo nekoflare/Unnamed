@@ -89,7 +89,9 @@ void memory::FreeListAllocator::coalesce() {
     }
 }
 
-static memory::FreeListAllocator free_list_allocator;
+namespace memory {
+    static FreeListAllocator free_list_allocator;
+}
 
 void memory::init_pma() {
     ASSERT(memmap_request.response != nullptr);

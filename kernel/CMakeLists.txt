@@ -54,6 +54,9 @@ set(KERNEL_SOURCE
         mm/vma.cpp
         mm/vma.hpp
         lib/utils.hpp
+        kernel/percpu.cpp
+        kernel/percpu.hpp
+        arch/x86_64/msr.hpp
 
 )
 

@@ -4,6 +4,7 @@
 
 #ifndef KERNEL_CPU_HPP
 #define KERNEL_CPU_HPP
+#include "kernel/percpu.hpp"
 
 namespace x86_64 {
     inline void hcf() {

@@ -11,7 +11,7 @@
 
 #include "lib/ptr_array_wrapper.hpp"
 
-#define PAGE_SIZE (4096)
+constexpr std::size_t PAGE_SIZE = 4096;
 
 namespace memory {
     struct FreeBlock {

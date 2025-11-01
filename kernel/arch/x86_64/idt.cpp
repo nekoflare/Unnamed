@@ -27,7 +27,7 @@ void x86_64::init_idt() {
     flush_idt(&idt_register);
 }
 
-void x86_64::interrupt_handler(RegistersX64 *regs) {
+void x86_64::interrupt_handler(Registers *regs) {
     (void) regs;
 
     logger::debug("Got an interrupt. Number: %lx", regs->interrupt_number);

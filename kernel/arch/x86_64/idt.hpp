@@ -50,7 +50,7 @@ namespace x86_64 {
     }
 
     void init_idt();
-    extern "C" void interrupt_handler(RegistersX64 *regs);
+    extern "C" void interrupt_handler(Registers *regs);
     extern "C" void flush_idt(const IdtRegister *reg);
 
 } // namespace x86_64

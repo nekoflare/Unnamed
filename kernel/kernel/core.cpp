@@ -1,6 +1,7 @@
 #include "arch/x86_64/gdt.hpp"
 #include "arch/x86_64/idt.hpp"
 #include "logger.hpp"
+#include "percpu.hpp"
 #include "mm/pma.hpp"
 extern "C" {
 extern void (*__init_array[])(void);
@@ -16,6 +17,7 @@ static inline void run_constructors() {
 
 extern "C" void kernel_main() {
     run_constructors();
+    core::setup_bsp_percpu();
     x86_64::init_gdt();
     x86_64::init_idt();
     memory::init_pma();
