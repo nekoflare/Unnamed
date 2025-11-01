@@ -2,7 +2,7 @@
 // Created by neko on 10/28/25.
 //
 
-#include "vma.hpp"
+#include "vmm.hpp"
 #include <limine.h>
 
 static volatile limine_hhdm_request hhdm_request = {.id = LIMINE_HHDM_REQUEST,

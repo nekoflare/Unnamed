@@ -51,8 +51,8 @@ set(KERNEL_SOURCE
         kernel/assert.hpp
         arch/x86_64/cpu.hpp
         lib/ptr_array_wrapper.hpp
-        mm/vma.cpp
-        mm/vma.hpp
+        mm/vmm.cpp
+        mm/vmm.hpp
         lib/utils.hpp
         kernel/percpu.cpp
         kernel/percpu.hpp

@@ -5,7 +5,7 @@
 #include "pma.hpp"
 #include <kernel/assert.hpp>
 #include <lib/utils.hpp>
-#include "vma.hpp"
+#include "vmm.hpp"
 
 static volatile limine_memmap_request memmap_request = {
         .id = LIMINE_MEMMAP_REQUEST,
