@@ -29,6 +29,15 @@ extern "C" void kernel_main() {
     memory::init_kernel_virtual_allocator();
     memory::init_heap();
 
+    auto a = new int;
+    auto b = new int;
+
+    *a = 10;
+    *b = 20;
+
+    logger::debug("%p %p", a, b);
+    logger::debug("%d %d", *a, *b);
+
     while (true) {
         asm volatile("cli; hlt");
     }

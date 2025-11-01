@@ -7,3 +7,6 @@
 [submodule "kernel/lib/nanoprintf"]
 	path = kernel/lib/nanoprintf
 	url = https://github.com/charlesnicholson/nanoprintf
+[submodule "kernel/lib/dlmalloc"]
+	path = kernel/lib/dlmalloc
+	url = https://github.com/ennorehling/dlmalloc

@@ -29,6 +29,11 @@ if (KERNEL_ARCHITECTURE STREQUAL "x86_64")
     include(cmake/x86_64-flags.cmake)
 endif ()
 
+add_compile_definitions(LACKS_UNISTD_H)
+add_compile_definitions(LACKS_SYS_PARAM_H)
+add_compile_definitions(LACKS_FCNTL_H)
+add_compile_definitions(LACKS_SYS_MMAN_H)
+
 set(CMAKE_C_FLAGS "${SHARED_C_CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS "${SHARED_C_CXX_FLAGS} -fno-exceptions -fno-rtti -fno-threadsafe-statics")
 set(CMAKE_EXE_LINKER_FLAGS "-static -nostdlib -z text -T ${CMAKE_SOURCE_DIR}/${KERNEL_ARCHITECTURE}_linker.ld -z max-page-size=0x1000 -fno-lto -fno-PIE -fno-PIC -nostartfiles")
@@ -70,7 +75,8 @@ set(KERNEL_SOURCE
         kernel/helpers.hpp
         lib/memory.hpp
         kernel/bit_helpers.hpp
-
+        lib/dlmalloc/malloc.c
+        lib/dlmalloc/malloc.h
 )
 
 # add architecture specific flags

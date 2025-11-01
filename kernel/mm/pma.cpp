@@ -100,6 +100,20 @@ void memory::init_pma() {
             memmap_request.response->entries};
     free_list_allocator.init(entries);
 }
+
+std::uintptr_t memory::get_highest_physical_address(){
+    std::uintptr_t highest_addresss = 0;
+    auto entries = PtrArrayWrapper<limine_memmap_entry>{
+        memmap_request.response->entries};
+
+    for (const auto entry : entries) {
+        if (entry.base + entry.length > highest_addresss)
+            highest_addresss = entry.base + entry.length;
+    }
+
+    return highest_addresss;
+}
+
 std::uintptr_t memory::alloc_page() {
     return free_list_allocator.alloc(PAGE_SIZE);
 }

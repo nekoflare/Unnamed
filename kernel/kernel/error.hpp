@@ -9,7 +9,8 @@ namespace core {
     enum class ErrorCode {
         MemoryMisaligned,
         IncorrectParameter,
-        OutOfMemory
+        OutOfMemory,
+        MapFail
     };
 }
 

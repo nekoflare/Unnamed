@@ -147,7 +147,7 @@ namespace memory {
                         working = mid; // middle segment
                     }
                     // working now points to the middle segment to free
-                    assert(working->npages == npages);
+                    ASSERT(working->npages == npages);
                     working->is_free = true;
                     coalesce(working);
                     lock_.unlock();
@@ -305,6 +305,8 @@ namespace memory {
     };
 
     void init_kernel_virtual_allocator() noexcept;
+    std::optional<std::uintptr_t> allocate_virtual_memory(std::size_t length);
+    void deallocate_virtual_memory(std::uintptr_t address, std::size_t length);
 } // namespace memory
 
 #endif

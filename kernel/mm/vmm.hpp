@@ -2,8 +2,8 @@
 // Created by neko on 10/28/25.
 //
 
-#ifndef KERNEL_VMA_HPP
-#define KERNEL_VMA_HPP
+#ifndef KERNEL_VMM_HPP
+#define KERNEL_VMM_HPP
 
 #include <cstdint>
 #include <kernel/bit_helpers.hpp>
@@ -32,7 +32,8 @@ namespace memory {
 
     constexpr uint64_t ppn_mask = 0x000FFFFFFFFFF000;
 
-    uintptr_t get_memory_slide();
+    std::uintptr_t get_memory_slide();
+    std::uintptr_t get_kernel_base_address();
 
     // We assume that pagemap is virtual.
     [[nodiscard]] bool map_virtual(

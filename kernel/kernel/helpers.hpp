@@ -21,6 +21,19 @@ namespace core {
     inline bool is_flag_set(T v, T bit) {
         return (v & bit) == bit;
     }
+
+    template <typename T>
+    constexpr T align_up(T value, T alignment) {
+        static_assert(std::is_integral_v<T>, "align_up requires integral type");
+        return (value + alignment - 1) & ~(alignment - 1);
+    }
+
+    // Align down to nearest multiple of alignment
+    template <typename T>
+    constexpr T align_down(T value, T alignment) {
+        static_assert(std::is_integral_v<T>, "align_down requires integral type");
+        return value & ~(alignment - 1);
+    }
 }
 
 #endif //KERNEL_HELPERS_HPP

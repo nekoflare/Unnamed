@@ -32,6 +32,7 @@ namespace memory {
     };
 
     void init_pma();
+    std::uintptr_t get_highest_physical_address();
 
     std::uintptr_t alloc_page();
     std::uintptr_t alloc_pages_continuous(std::size_t page_count);

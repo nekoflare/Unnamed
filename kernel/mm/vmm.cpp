@@ -16,6 +16,12 @@ static volatile limine_hhdm_request hhdm_request = {.id = LIMINE_HHDM_REQUEST,
                                                             LIMINE_API_REVISION,
                                                     .response = nullptr};
 
+static volatile limine_kernel_address_request kernel_address_request = {
+    .id = LIMINE_KERNEL_ADDRESS_REQUEST,
+    .revision = LIMINE_API_REVISION,
+    .response = nullptr
+};
+
 constexpr std::uintptr_t va_offset(std::uintptr_t va) noexcept {
     return va & 0xFFFULL;
 }
@@ -40,7 +46,11 @@ constexpr std::uintptr_t va_canonical_bits(std::uintptr_t va) noexcept {
     return va >> 48 & 0xFFFFULL;
 }
 
-uintptr_t memory::get_memory_slide() { return hhdm_request.response->offset; }
+std::uintptr_t memory::get_memory_slide() { return hhdm_request.response->offset; }
+
+std::uintptr_t memory::get_kernel_base_address() {
+    return kernel_address_request.response->virtual_base;
+}
 
 bool memory::map_virtual(const std::uintptr_t pagemap_virtual,
                          const std::uintptr_t virt,
