@@ -57,6 +57,15 @@ set(KERNEL_SOURCE
         kernel/percpu.cpp
         kernel/percpu.hpp
         arch/x86_64/msr.hpp
+        mm/vma.cpp
+        mm/vma.hpp
+        lib/spinlock.cpp
+        lib/spinlock.hpp
+        lib/memory.cpp
+        kernel/panic.cpp
+        mm/heap.cpp
+        mm/heap.hpp
+        lib/cxx-runtime/nothrow.cpp
 
 )
 

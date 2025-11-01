@@ -21,6 +21,6 @@ namespace x86_64 {
         auto high = static_cast<uint32_t>(value >> 32);
         asm volatile("wrmsr" : : "c"(msr), "a"(low), "d"(high));
     }
-}
+} // namespace x86_64
 
-#endif //KERNEL_MSR_HPP
+#endif // KERNEL_MSR_HPP

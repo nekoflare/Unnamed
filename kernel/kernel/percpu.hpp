@@ -10,11 +10,10 @@
 namespace core {
     using CpuId = uint32_t;
 
-    struct percpu {
-    };
+    struct percpu {};
 
     void setup_bsp_percpu();
-    percpu* get_percpu();
-}
+    percpu *get_percpu();
+} // namespace core
 
-#endif //KERNEL_PERCPU_HPP
+#endif // KERNEL_PERCPU_HPP
