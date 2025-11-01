@@ -3,3 +3,7 @@
 //
 
 #include "vma.hpp"
+
+void memory::init_kernel_virtual_allocator() noexcept {
+    
+}

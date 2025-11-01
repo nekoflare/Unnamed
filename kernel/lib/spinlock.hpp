@@ -8,9 +8,9 @@
 #include <atomic>
 
 class Spinlock {
-public:
-    std::atomic_flag locked_ = ATOMIC_FLAG_INIT;
 private:
+    std::atomic_flag locked_ = ATOMIC_FLAG_INIT;
+public:
     void lock() noexcept;
     void unlock() noexcept;
 };

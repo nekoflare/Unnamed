@@ -14,17 +14,6 @@
 
 namespace memory {
 
-    class SpinLock {
-        std::atomic_flag locked_ = ATOMIC_FLAG_INIT;
-
-    public:
-        void lock() noexcept {
-            while (locked_.test_and_set(std::memory_order_acquire)) {
-            }
-        }
-        void unlock() noexcept { locked_.clear(std::memory_order_release); }
-    };
-
     template<size_t MAX_NODES = 128>
     class VAddrAllocator {
     public:
@@ -202,7 +191,7 @@ namespace memory {
         uint64_t page_size_ = 0;
         size_t total_pages_ = 0;
 
-        mutable SpinLock lock_;
+        mutable Spinlock lock_;
 
         static size_t align_up(size_t v, size_t align) noexcept {
             if (align <= 1)
@@ -315,6 +304,8 @@ namespace memory {
             }
         }
     };
+
+    void init_kernel_virtual_allocator() noexcept;
 } // namespace memory
 
 #endif

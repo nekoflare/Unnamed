@@ -4,6 +4,7 @@
 #include "mm/pma.hpp"
 #include "percpu.hpp"
 #include "arch/x86_64/cpu.hpp"
+#include "mm/heap.hpp"
 #include "mm/vmm.hpp"
 #include "mm/vma.hpp"
 
@@ -25,6 +26,8 @@ extern "C" void kernel_main() {
     x86_64::init_gdt();
     x86_64::init_idt();
     memory::init_pma();
+    memory::init_kernel_virtual_allocator();
+    memory::init_heap();
 
     while (true) {
         asm volatile("cli; hlt");
