@@ -10,6 +10,4 @@ void Spinlock::lock() noexcept {
     }
 }
 
-void Spinlock::unlock() noexcept {
-    locked_.clear(std::memory_order_release);
-}
+void Spinlock::unlock() noexcept { locked_.clear(std::memory_order_release); }

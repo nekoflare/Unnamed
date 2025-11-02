@@ -85,6 +85,9 @@ set(KERNEL_SOURCE
         acpi/acpi.hpp
         acpi/uacpi_io.cpp
         acpi/uacpi_io.hpp
+        kernel/irqs/irqs.cpp
+        kernel/irqs/irqs.hpp
+        lib/vector.hpp
 )
 
 # add architecture specific flags

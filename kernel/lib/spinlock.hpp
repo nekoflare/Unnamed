@@ -10,9 +10,10 @@
 class Spinlock {
 private:
     std::atomic_flag locked_ = ATOMIC_FLAG_INIT;
+
 public:
     void lock() noexcept;
     void unlock() noexcept;
 };
 
-#endif //KERNEL_SPINLOCK_HPP
+#endif // KERNEL_SPINLOCK_HPP

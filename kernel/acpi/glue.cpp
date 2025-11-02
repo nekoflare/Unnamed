@@ -213,9 +213,7 @@ uacpi_status uacpi_kernel_io_write32(uacpi_handle handle, uacpi_size offset,
 }
 
 
-void *uacpi_kernel_alloc(uacpi_size size) {
-    return malloc(size);
-}
+void *uacpi_kernel_alloc(uacpi_size size) { return malloc(size); }
 
 #ifdef UACPI_NATIVE_ALLOC_ZEROED
 void *uacpi_kernel_alloc_zeroed(uacpi_size size) {

@@ -2,6 +2,7 @@
 #include "arch/x86_64/cpu.hpp"
 #include "arch/x86_64/gdt.hpp"
 #include "arch/x86_64/idt.hpp"
+#include "irqs/irqs.hpp"
 #include "logger.hpp"
 #include "mm/heap.hpp"
 #include "mm/pma.hpp"
@@ -30,6 +31,7 @@ extern "C" void kernel_main() {
     memory::init_kernel_virtual_allocator();
     memory::init_heap();
     acpi::init_stage_1();
+    irqs::init();
 
     while (true) {
         asm volatile("cli; hlt");
