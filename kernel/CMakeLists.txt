@@ -29,6 +29,8 @@ if (KERNEL_ARCHITECTURE STREQUAL "x86_64")
     include(cmake/x86_64-flags.cmake)
 endif ()
 
+include(acpi/uacpi/uacpi.cmake)
+
 add_compile_definitions(LACKS_UNISTD_H)
 add_compile_definitions(LACKS_SYS_PARAM_H)
 add_compile_definitions(LACKS_FCNTL_H)
@@ -45,6 +47,7 @@ include_directories(lib/freestnd-cxx-hdrs/${KERNEL_ARCHITECTURE}/include)
 include_directories(lib/nanoprintf/)
 include_directories(./) # include this whole place as a whole.
 include_directories(${CMAKE_SOURCE_DIR}/../tools/Limine/) # whoops, kinda whacky
+include_directories(${UACPI_INCLUDES})
 
 # here sources
 set(KERNEL_SOURCE
@@ -77,6 +80,11 @@ set(KERNEL_SOURCE
         kernel/bit_helpers.hpp
         lib/dlmalloc/malloc.c
         lib/dlmalloc/malloc.h
+        acpi/glue.cpp
+        acpi/acpi.cpp
+        acpi/acpi.hpp
+        acpi/uacpi_io.cpp
+        acpi/uacpi_io.hpp
 )
 
 # add architecture specific flags
@@ -98,7 +106,8 @@ else ()
 endif ()
 
 add_executable(kernel
-        ${KERNEL_SOURCE})
+        ${KERNEL_SOURCE}
+        ${UACPI_SOURCES})
 
 # here link libraries
 

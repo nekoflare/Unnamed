@@ -1,12 +1,13 @@
+#include "acpi/acpi.hpp"
+#include "arch/x86_64/cpu.hpp"
 #include "arch/x86_64/gdt.hpp"
 #include "arch/x86_64/idt.hpp"
 #include "logger.hpp"
-#include "mm/pma.hpp"
-#include "percpu.hpp"
-#include "arch/x86_64/cpu.hpp"
 #include "mm/heap.hpp"
-#include "mm/vmm.hpp"
+#include "mm/pma.hpp"
 #include "mm/vma.hpp"
+#include "mm/vmm.hpp"
+#include "percpu.hpp"
 
 extern "C" {
 extern void (*__init_array[])(void);
@@ -28,15 +29,7 @@ extern "C" void kernel_main() {
     memory::init_pma();
     memory::init_kernel_virtual_allocator();
     memory::init_heap();
-
-    auto a = new int;
-    auto b = new int;
-
-    *a = 10;
-    *b = 20;
-
-    logger::debug("%p %p", a, b);
-    logger::debug("%d %d", *a, *b);
+    acpi::init_stage_1();
 
     while (true) {
         asm volatile("cli; hlt");

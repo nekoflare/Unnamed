@@ -31,7 +31,6 @@ void logger::debug(const char *fmt, ...) noexcept {
     buf[sizeof(buf) - 1] = '\0';
 
     log_to_e9(buf, 1024);
-    log_to_e9("\n", 1);
 
     va_end(args);
 }

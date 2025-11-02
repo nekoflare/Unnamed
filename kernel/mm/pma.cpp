@@ -18,7 +18,7 @@ void memory::FreeListAllocator::init(
         if (type != LIMINE_MEMMAP_USABLE)
             continue;
 
-        logger::debug("Adding usable memory: 0x%lx -> 0x%lx", base,
+        logger::debug("Adding usable memory: 0x%lx -> 0x%lx\n", base,
                       base + length);
 
         std::uintptr_t virt_start = get_memory_slide() + base;
@@ -101,12 +101,12 @@ void memory::init_pma() {
     free_list_allocator.init(entries);
 }
 
-std::uintptr_t memory::get_highest_physical_address(){
+std::uintptr_t memory::get_highest_physical_address() {
     std::uintptr_t highest_addresss = 0;
     auto entries = PtrArrayWrapper<limine_memmap_entry>{
-        memmap_request.response->entries};
+            memmap_request.response->entries};
 
-    for (const auto entry : entries) {
+    for (const auto entry: entries) {
         if (entry.base + entry.length > highest_addresss)
             highest_addresss = entry.base + entry.length;
     }

@@ -6,11 +6,11 @@
 #define KERNEL_HEAP_HPP
 
 #ifdef __cplusplus
-#    include <cstdint>
-#    include <cstddef>
+#include <cstddef>
+#include <cstdint>
 #else
-#    include <stdint.h>
-#    include <stddef.h>
+#include <stddef.h>
+#include <stdint.h>
 #endif
 
 #define MAP_PRIVATE 1
@@ -22,9 +22,10 @@
 extern "C" {
 #endif
 
-    void* mmap(void* addr, size_t length, int prot, int flags, int fd, intptr_t offset);
-    int munmap(void* addr, size_t length);
-    long unsigned int sbrk(ptrdiff_t length);
+void *mmap(void *addr, size_t length, int prot, int flags, int fd,
+           intptr_t offset);
+int munmap(void *addr, size_t length);
+void *sbrk(ptrdiff_t length);
 
 #ifdef __cplusplus
 }

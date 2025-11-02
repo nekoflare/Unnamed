@@ -19,8 +19,8 @@ namespace x86_64 {
     }
 
     // Invalidate a single virtual page
-    inline void invlpg(void* addr) {
-        asm volatile("invlpg (%0)" :: "r"(addr) : "memory");
+    inline void invlpg(void *addr) {
+        asm volatile("invlpg (%0)" ::"r"(addr) : "memory");
     }
 } // namespace x86_64
 

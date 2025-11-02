@@ -21,4 +21,22 @@ extern "C"
         return dest;
     }
 
+    int memcmp(const void* s1, const void* s2, size_t n) {
+        const auto *p1 = static_cast<const unsigned char*>(s1), *p2 = static_cast<const unsigned char*>(s2);
+        for (size_t i = 0; i < n; i++)
+            if (p1[i] != p2[i]) return p1[i] - p2[i];
+        return 0;
+    }
+
+    void* memmove(void* dest, const void* src, size_t n) {
+        if (dest < src) {
+            return memcpy(dest, src, n);
+        } else if (dest > src) {
+            auto  d = static_cast<char*>(dest);
+            const auto* s = static_cast<const char*>(src);
+            for (size_t i = n; i > 0; i--) d[i - 1] = s[i - 1];
+            return dest;
+        }
+        return dest;
+    }
 }

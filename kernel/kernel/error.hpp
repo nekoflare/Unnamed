@@ -14,4 +14,4 @@ namespace core {
     };
 }
 
-#endif //KERNEL_ERROR_HPP
+#endif // KERNEL_ERROR_HPP

@@ -11,8 +11,8 @@
 #include <lib/spinlock.hpp>
 #include <optional>
 
-#include "pma.hpp"
 #include "kernel/assert.hpp"
+#include "pma.hpp"
 
 namespace memory {
 

@@ -10,3 +10,6 @@
 [submodule "kernel/lib/dlmalloc"]
 	path = kernel/lib/dlmalloc
 	url = https://github.com/ennorehling/dlmalloc
+[submodule "kernel/acpi/uacpi"]
+	path = kernel/acpi/uacpi
+	url = https://github.com/uACPI/uACPI
