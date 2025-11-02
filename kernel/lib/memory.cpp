@@ -44,4 +44,41 @@ void *memmove(void *dest, const void *src, size_t n) {
     }
     return dest;
 }
+
+size_t strlen(const char *s) {
+    size_t len = 0;
+    while (s[len])
+        len++;
+    return len;
+}
+
+int strcmp(const char *s1, const char *s2) {
+    while (*s1 && (*s1 == *s2)) {
+        s1++;
+        s2++;
+    }
+    return (unsigned char) *s1 - (unsigned char) *s2;
+}
+
+char *strstr(const char *haystack, const char *needle) {
+    if (*needle == '\0') {
+        return (char *) haystack;
+    }
+
+    for (const char *h = haystack; *h != '\0'; h++) {
+        const char *h_ptr = h;
+        const char *n_ptr = needle;
+
+        while (*h_ptr != '\0' && *n_ptr != '\0' && *h_ptr == *n_ptr) {
+            h_ptr++;
+            n_ptr++;
+        }
+
+        if (*n_ptr == '\0') {
+            return (char *) h;
+        }
+    }
+
+    return NULL;
+}
 }

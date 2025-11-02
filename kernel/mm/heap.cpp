@@ -154,7 +154,13 @@ void *operator new(std::size_t size, const std::nothrow_t &) noexcept {
     return malloc(size);
 }
 
+void operator delete(void *ptr) {
+    if (ptr)
+        free(ptr);
+}
+
 void operator delete(void *ptr, std::size_t size) {
     (void) size;
-    free(ptr);
+    if (ptr)
+        free(ptr);
 }

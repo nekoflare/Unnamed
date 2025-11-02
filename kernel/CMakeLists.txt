@@ -88,6 +88,12 @@ set(KERNEL_SOURCE
         kernel/irqs/irqs.cpp
         kernel/irqs/irqs.hpp
         lib/vector.hpp
+        lib/cxx-runtime/dso_handle.cpp
+        lib/cxx-runtime/atexit.cpp
+        drivers/clocksource.cpp
+        drivers/clocksource.hpp
+        lib/string.hpp
+        lib/exception.hpp
 )
 
 # add architecture specific flags

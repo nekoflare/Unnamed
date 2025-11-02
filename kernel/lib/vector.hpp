@@ -11,12 +11,7 @@
 #include <iterator>
 #include <memory>
 #include <utility>
-
-#define EXCEPTION(_s)                                                          \
-    do {                                                                       \
-        logger::debug("%s", _s);                                               \
-        x86_64::hcf();                                                         \
-    } while (0);
+#include "exception.hpp"
 
 template<typename T>
 class Vector {
