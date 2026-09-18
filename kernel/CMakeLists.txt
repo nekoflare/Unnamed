@@ -46,7 +46,7 @@ include_directories(lib/freestnd-c-hdrs/${KERNEL_ARCHITECTURE}/include)
 include_directories(lib/freestnd-cxx-hdrs/${KERNEL_ARCHITECTURE}/include)
 include_directories(lib/nanoprintf/)
 include_directories(./) # include this whole place as a whole.
-include_directories(${CMAKE_SOURCE_DIR}/../tools/Limine/) # whoops, kinda whacky
+include_directories(lib/limine-protocol/include/)
 include_directories(${UACPI_INCLUDES})
 
 # here sources

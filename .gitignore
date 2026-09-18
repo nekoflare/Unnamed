@@ -48,3 +48,7 @@ kernel/build
 tools/Limine
 tools/ovmf-binaries
 tools/*.iso
+
+# bullshiii
+.vscode
+compile_commands.json

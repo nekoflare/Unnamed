@@ -11,14 +11,13 @@
 #include "arch/x86_64/cpu.hpp"
 #include "utility"
 
-static volatile limine_hhdm_request hhdm_request = {.id = LIMINE_HHDM_REQUEST,
-                                                    .revision =
-                                                            LIMINE_API_REVISION,
-                                                    .response = nullptr};
+static volatile limine_hhdm_request hhdm_request = {.id = LIMINE_HHDM_REQUEST_ID,
+                                                    .revision = 0,
+                                                    .response = NULL};
 
-static volatile limine_kernel_address_request kernel_address_request = {
-        .id = LIMINE_KERNEL_ADDRESS_REQUEST,
-        .revision = LIMINE_API_REVISION,
+static volatile limine_executable_address_request kernel_address_request = {
+        .id = LIMINE_EXECUTABLE_ADDRESS_REQUEST_ID,
+        .revision = 0,
         .response = nullptr};
 
 constexpr std::uintptr_t va_offset(std::uintptr_t va) noexcept {

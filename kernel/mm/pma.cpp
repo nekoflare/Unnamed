@@ -8,8 +8,8 @@
 #include "vmm.hpp"
 
 static volatile limine_memmap_request memmap_request = {
-        .id = LIMINE_MEMMAP_REQUEST,
-        .revision = LIMINE_API_REVISION,
+        .id = LIMINE_MEMMAP_REQUEST_ID,
+        .revision = 0,
         .response = nullptr};
 
 void memory::FreeListAllocator::init(

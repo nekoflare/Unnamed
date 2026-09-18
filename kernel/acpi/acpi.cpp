@@ -12,8 +12,8 @@
 #include "uacpi/types.h"
 #include "uacpi/uacpi.h"
 
-volatile limine_rsdp_request rsdp_request = {.id = LIMINE_RSDP_REQUEST,
-                                             .revision = LIMINE_API_REVISION,
+volatile limine_rsdp_request rsdp_request = {.id = LIMINE_RSDP_REQUEST_ID,
+                                             .revision = 0,
                                              .response = nullptr};
 
 std::uintptr_t acpi::get_rsdp_physical_pointer() {

@@ -41,27 +41,6 @@ SECTIONS
         __fini_array_end = .;
     } :rodata
 
-    . = ALIGN(CONSTANT(MAXPAGESIZE));
-
-    .data :
-    {
-        _sdata = .;
-        *(.data .data.*)
-        _edata = .;
-    } :data
-    
-    _sidata = LOADADDR(.data);
-
-    . = ALIGN(CONSTANT(MAXPAGESIZE));
-
-    .bss (NOLOAD) : {
-        _sbss = .;
-        *(.bss .bss.*)
-        *(COMMON)
-        _ebss = .;
-    } :data
-
-    . = ALIGN(8);
     .gcc_except_table : {
         *(.gcc_except_table)
     } :rodata
@@ -73,7 +52,27 @@ SECTIONS
     .eh_frame : {
         *(.eh_frame)
     } :rodata
-    
+
+    . = ALIGN(CONSTANT(MAXPAGESIZE));
+
+    .data :
+    {
+        _sdata = .;
+        *(.data .data.*)
+        _edata = .;
+    } :data
+
+    _sidata = LOADADDR(.data);
+
+    . = ALIGN(CONSTANT(MAXPAGESIZE));
+
+    .bss (NOLOAD) : {
+        _sbss = .;
+        *(.bss .bss.*)
+        *(COMMON)
+        _ebss = .;
+    } :data
+
     /DISCARD/ : {
         *(.note .note.*)
         *(.comment)

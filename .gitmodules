@@ -10,3 +10,6 @@
 [submodule "kernel/acpi/uacpi"]
 	path = kernel/acpi/uacpi
 	url = https://github.com/uACPI/uACPI
+[submodule "kernel/lib/limine-protocol"]
+	path = kernel/lib/limine-protocol
+	url = https://github.com/limine-bootloader/limine-protocol
