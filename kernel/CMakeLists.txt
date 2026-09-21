@@ -92,6 +92,13 @@ set(KERNEL_SOURCE
         lib/cxx-runtime/atexit.cpp
         drivers/clocksource.cpp
         drivers/clocksource.hpp
+        drivers/ktime.hpp
+        drivers/tsc.hpp
+        drivers/tsc.cpp
+        drivers/hpet.hpp
+        drivers/hpet.cpp
+        drivers/acpi_pm.hpp
+        drivers/acpi_pm.cpp
         lib/string.hpp
         lib/exception.hpp
 )

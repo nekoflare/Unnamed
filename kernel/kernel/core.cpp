@@ -28,8 +28,8 @@ extern "C" void kernel_main() {
     memory::init_pma();
     memory::init_kernel_virtual_allocator();
     memory::init_heap();
-    clocksource::init();
     acpi::init_early_acpi();
+    clocksource::init();
     irqs::init();
 
     while (true) {
