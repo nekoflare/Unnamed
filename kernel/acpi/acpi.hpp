@@ -9,7 +9,7 @@
 
 namespace acpi {
     std::uintptr_t get_rsdp_physical_pointer();
-    void init_stage_1();
+    void init_early_acpi();
 } // namespace acpi
 
 #endif // KERNEL_ACPI_HPP

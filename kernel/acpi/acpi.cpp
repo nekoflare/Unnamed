@@ -21,7 +21,7 @@ std::uintptr_t acpi::get_rsdp_physical_pointer() {
            memory::get_memory_slide();
 }
 
-void acpi::init_stage_1() {
+void acpi::init_early_acpi() {
     uacpi_status ret = uacpi_initialize(0);
     if (uacpi_unlikely_error(ret)) {
         logger::debug("uacpi_initialize error: %s\n",

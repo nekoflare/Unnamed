@@ -1,14 +1,11 @@
 #include "acpi/acpi.hpp"
-#include "arch/x86_64/cpu.hpp"
 #include "arch/x86_64/gdt.hpp"
 #include "arch/x86_64/idt.hpp"
 #include "drivers/clocksource.hpp"
 #include "irqs/irqs.hpp"
-#include "logger.hpp"
 #include "mm/heap.hpp"
 #include "mm/pma.hpp"
 #include "mm/vma.hpp"
-#include "mm/vmm.hpp"
 #include "percpu.hpp"
 
 extern "C" {
@@ -31,9 +28,9 @@ extern "C" void kernel_main() {
     memory::init_pma();
     memory::init_kernel_virtual_allocator();
     memory::init_heap();
-    acpi::init_stage_1();
-    irqs::init();
     clocksource::init();
+    acpi::init_early_acpi();
+    irqs::init();
 
     while (true) {
         asm volatile("cli; hlt");

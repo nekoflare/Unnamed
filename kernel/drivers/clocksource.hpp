@@ -4,6 +4,7 @@
 
 #ifndef KERNEL_CLOCKSOURCE_HPP
 #define KERNEL_CLOCKSOURCE_HPP
+#include <cstdint>
 #include <utility>
 
 #include "lib/string.hpp"
@@ -33,7 +34,6 @@ namespace clocksource {
 
         virtual ~Clocksource() = default;
 
-        // Pure virtual function for reading current ticks
         virtual uint64_t read() const ;
 
         [[nodiscard]] const String &name() const { return name_; }
